@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
