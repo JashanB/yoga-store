@@ -9,6 +9,9 @@ function App() {
     background: 'rgba(0,0,0,0.03)',
     // border-radius: '8px'
   }
+  // const backgroundStyle = {
+  //   backgroundImage = 
+  // }
   return (
     // <Router>
     // <div>
@@ -23,8 +26,9 @@ function App() {
     // {/* </Router> */}
     // </div>
     <div className="App">
-    <img className="logo-img" src="yogalogo.png"></img>
-    <img className="yoga-background-img"src="yoga.png"></img>
+    {/* <img className="logo-img" src="yogalogo.png"></img>
+    <img className="main-header-img" src="yogaheader.png"></img>
+    <img className="yoga-background-img"src="yoga.png"></img> */}
     </div>
   );
 }
