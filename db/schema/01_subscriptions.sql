@@ -5,6 +5,6 @@ CREATE TABLE subscriptions (
   title VARCHAR(255) NOT NULL,
   cost SMALLINT NOT NULL,
   description TEXT,
-  duration TINYINT NOT NULL,
+  duration(mo) TINYINT NOT NULL,
   is_available BOOLEAN NOT NULL DEFAULT TRUE,
 );
