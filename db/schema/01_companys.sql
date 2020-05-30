@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS companys CASCADE;
+
+CREATE TABLE companys (
+  id SERIAL PRIMARY KEY NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  pw VARCHAR(255) NOT NULL,
+  billingAddress VARCHAR(255) NOT NULL,
+  creditcard VARCHAR(20) NOT NULL
+);
