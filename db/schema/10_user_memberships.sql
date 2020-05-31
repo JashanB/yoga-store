@@ -7,6 +7,5 @@ CREATE TABLE user_memberships (
   num_remaining TINYINT,
   num_used TINYINT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  expiration_date TIMESTAMP,
-
+  expiration_date TIMESTAMP
 );

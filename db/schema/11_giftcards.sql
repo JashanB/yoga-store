@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS giftcards CASCADE;
+
+CREATE TABLE giftcards (
+  id SERIAL PRIMARY KEY NOT NULL,
+  description TEXT,
+  amount SMALLINT NOT NULL,
+  available BOOLEAN NOT NULL DEFAULT TRUE
+);
