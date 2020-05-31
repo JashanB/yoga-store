@@ -6,6 +6,7 @@ CREATE TABLE user_memberships (
   PRIMARY KEY (user_id, membership_id),
   num_remaining TINYINT,
   num_used TINYINT,
+  is_unlimited BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   expiration_date TIMESTAMP
 );
