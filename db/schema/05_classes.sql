@@ -6,5 +6,5 @@ CREATE TABLE classes (
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   type VARCHAR(255) NOT NULL,
-  duration(min) TINYINT NOT NULL
+  duration_min SMALLINT NOT NULL
 );

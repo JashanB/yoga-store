@@ -5,7 +5,7 @@ CREATE TABLE teachers (
   -- company_id INTEGER REFERENCES companys(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  level TINYINT NOT NULL,
+  level SMALLINT NOT NULL,
   direct_deposit VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL
 );
