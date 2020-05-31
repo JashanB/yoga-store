@@ -7,5 +7,10 @@ CREATE TABLE events (
   description TEXT,
   start_date TIMESTAMP NOT NULL,
   end_date TIMESTAMP NOT NULL,
-  price SMALLINT NOT NULL
+  teachers_required SMALLINT NOT NULL,
+  teachers_allotted SMALLINT,
+  price SMALLINT NOT NULL,
+  max_spots SMALLINT NOT NULL,
+  spots_remaining SMALLINT,
+  is_cancelled BOOLEAN NOT NULL DEFAULT FALSE
 );

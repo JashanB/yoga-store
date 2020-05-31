@@ -4,6 +4,7 @@ CREATE TABLE classes (
   id SERIAL PRIMARY KEY NOT NULL,
   teacher_id INTEGER REFERENCES teachers(id) ON DELETE CASCADE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE,
+  teacher_sign_in BOOLEAN NOT NULL DEFAULT FALSE,
   name VARCHAR(255) NOT NULL,
   type VARCHAR(255) NOT NULL,
   duration_min SMALLINT NOT NULL,
