@@ -14,4 +14,4 @@ CREATE TABLE events (
   spots_remaining SMALLINT,
   is_cancelled BOOLEAN NOT NULL DEFAULT FALSE
 );
-\
+
