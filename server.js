@@ -32,6 +32,7 @@ app.use(cookieSession({
 }));
 app.use(methodOverride('_method'));
 
+const homepageRoutes = require("./routes/homepage");
 
 app.get('/home', (req, res) => {
   res.send({ express: 'Hello From Express' });
@@ -45,3 +46,5 @@ app.post('/api/world', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+app.use("/", homepageRoutes(database));

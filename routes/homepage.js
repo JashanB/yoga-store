@@ -3,20 +3,16 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const id = req.session.user_id;
-    if (id) {
-      res.redirect(`/${id}`)
-    } else {
-    db.getResourcesOrderByCountRating()
+    db.getClassesForLocation()
       .then(data => {
         console.log(data)
-        const resource = { data: data };
-        res.render('index', { resource });
+        const classes = { data: data };
+        res.send({ classes });
       })
       .catch(err => {
         console.error(err);
       });
-    }
+
   });
 
   router.post("/search", (req, res) => {
