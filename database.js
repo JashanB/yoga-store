@@ -373,3 +373,7 @@ exports.addNewResource = addNewResource;
 exports.linkTopicToResource = linkTopicToResource;
 exports.getTopicsForResource = getTopicsForResource;
 exports.insertUserTopics = insertUserTopics;
+
+
+// DATABASE FUNCTIONS:
+//
