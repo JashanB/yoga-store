@@ -123,13 +123,13 @@ const addTopicsToUser = function (user_id, topic1, topic2, topic3) {
     })
 }
 
-const getAllMyLikedResources = function (userId) {
+const getClassesForLocation = function (locationid) {
   return db.query(
-    `SELECT resources.*
-    FROM resources
-    JOIN likes ON likes.resource_id = resources.id
-    WHERE likes.user_id = $1
-     `, [userId])
+    `SELECT classes.*
+    FROM classes
+    JOIN locations ON locations.id = classes.location_id
+    WHERE locations.id = $1
+     `, [locationid])
     .then(res => {
       return res.rows;
     });
@@ -289,7 +289,7 @@ const deleteUploadedResource = function(resourceId, createdBy) {
   return db.query(`DELETE FROM resources WHERE id = $1 AND created_by = $2`, [resourceId, createdBy])
 }
 
-const getAllMyLikedResourcesBySearch = function (search, userId) {
+const getClassesForLocationBySearch = function (search, userId) {
   return db.query(`SELECT resources.*
     FROM topics
     JOIN topics_resources ON topics_resources.topic_id = topics.id
@@ -353,7 +353,7 @@ exports.addUser = addUser;
 exports.getAllTopics = getAllTopics;
 exports.getUserWithId = getUserWithId;
 exports.getUserWithEmail = getUserWithEmail;
-exports.getAllMyLikedResources = getAllMyLikedResources;
+exports.getClassesForLocation = getClassesForLocation;
 exports.getAllMyUploadedResources = getAllMyUploadedResources
 exports.getResourcesOrderByCountRating = getResourcesOrderByCountRating;
 exports.getResourcesByTopicsForUser = getResourcesByTopicsForUser;
@@ -367,7 +367,7 @@ exports.checkIfRated = checkIfRated;
 exports.deleteRated = deleteRated;
 exports.insertIntoRatings = insertIntoRatings;
 exports.deleteUploadedResource = deleteUploadedResource;
-exports.getAllMyLikedResourcesBySearch = getAllMyLikedResourcesBySearch;
+exports.getClassesForLocationBySearch = getClassesForLocationBySearch;
 exports.deleteTopicFromUser = deleteTopicFromUser;
 exports.addNewResource = addNewResource;
 exports.linkTopicToResource = linkTopicToResource;

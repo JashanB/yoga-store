@@ -33,7 +33,7 @@ app.use(cookieSession({
 app.use(methodOverride('_method'));
 
 
-app.get('/api/hello', (req, res) => {
+app.get('/home', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
