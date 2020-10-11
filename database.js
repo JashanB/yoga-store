@@ -135,6 +135,16 @@ const getClassesForLocation = function (locationid) {
     });
 }
 
+const getAllLocations = function () {
+  return db.query(
+    `SELECT locations.*
+    FROM locations
+     `, [])
+    .then(res => {
+      return res.rows;
+    });
+}
+
 const getAllMyUploadedResources = function (userId) {
   return db.query(
     `SELECT resources.*
@@ -373,6 +383,7 @@ exports.addNewResource = addNewResource;
 exports.linkTopicToResource = linkTopicToResource;
 exports.getTopicsForResource = getTopicsForResource;
 exports.insertUserTopics = insertUserTopics;
+exports.getAllLocations = getAllLocations;
 
 
 // DATABASE FUNCTIONS:

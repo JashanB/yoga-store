@@ -3,16 +3,22 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.getClassesForLocation()
+    db.getAllLocations()
       .then(data => {
-        console.log(data)
-        const classes = { data: data };
-        res.send({ classes });
+        const locations = { data: data }
+        db.getClassesForLocation()
+          .then(secondData => {
+            console.log(secondData)
+            const classes = { data: secondData };
+            res.send({ classes, locations });
+          })
+          .catch(err => {
+            console.error(err);
+          });
       })
       .catch(err => {
         console.error(err);
       });
-
   });
 
   router.post("/search", (req, res) => {
@@ -20,7 +26,7 @@ module.exports = (db) => {
     let userId = parseInt(req.session.user_id);
     db.getResourcesBySearch(search)
       .then(data => {
-        const resource = {data:data, userId:userId};
+        const resource = { data: data, userId: userId };
         res.render('index', { resource });
       })
       .catch(err => {
@@ -55,42 +61,42 @@ module.exports = (db) => {
     const userId = parseInt(req.session.user_id);
     const resourceId = req.params.resourceid;
     if (userId) {
-    db.checkIfLiked(resourceId, userId)
-    .then(data => {
-      if (data.length !== 0) {
-        db.deleteLiked(resourceId, userId)
-        .then(() => {
-          res.redirect(`/${userId}`);
+      db.checkIfLiked(resourceId, userId)
+        .then(data => {
+          if (data.length !== 0) {
+            db.deleteLiked(resourceId, userId)
+              .then(() => {
+                res.redirect(`/${userId}`);
+              })
+              .catch(err => {
+                console.error(err);
+                res.status(500).send(err.stack)
+              });
+          } else {
+            db.insertIntoLikes(userId, resourceId)
+              .then(() => {
+                db.getTopicsForResource(resourceId)
+                  .then(data => {
+                    const topics = data;
+                    for (let i = 0; i < topics.length; i++) {
+                      db.insertUserTopics(userId, topics[i].topic_id)
+                    }
+                    res.redirect(`/${userId}`);
+                  })
+                  .catch(err => {
+                    console.error(err);
+                    res.status(500).send(err.stack)
+                  });
+              })
+              .catch(err => {
+                console.error(err);
+                res.status(500).send(err.stack)
+              });
+          }
         })
-        .catch(err => {
-          console.error(err);
-          res.status(500).send(err.stack)
-        });
-      } else {
-        db.insertIntoLikes(userId, resourceId)
-        .then(() => {
-          db.getTopicsForResource(resourceId)
-          .then(data => {
-            const topics = data;
-            for (let i = 0; i < topics.length; i++) {
-              db.insertUserTopics(userId, topics[i].topic_id)
-            }
-            res.redirect(`/${userId}`);
-          })
-          .catch(err => {
-            console.error(err);
-            res.status(500).send(err.stack)
-          });
-        })
-        .catch(err => {
-          console.error(err);
-          res.status(500).send(err.stack)
-        });
-      }
-    })
-  } else {
-    res.redirect(`/resources/${resourceId}`)
-  }
+    } else {
+      res.redirect(`/resources/${resourceId}`)
+    }
   });
 
   return router;
