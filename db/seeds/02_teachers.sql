@@ -1,5 +1,5 @@
-insert into topics (name) values ('Biology');
-insert into topics (name) values ('Chemistry');
-insert into topics (name) values ('Programming');
-insert into topics (name) values ('Math');
-insert into topics (name) values ('Physics');
+insert into teachers (name, level, direct_deposit, address) values ('Bob', 1, 'xxxxxx', '123 Street');
+insert into teachers (name, level, direct_deposit, address) values ('Cath', 2, 'xxxxx', 'abc road');
+-- insert into teachers (name, level, direct_deposit, address) values ('');
+-- insert into teachers (name, level, direct_deposit, address) values ('');
+-- insert into teachers (name, level, direct_deposit, address) values ('');

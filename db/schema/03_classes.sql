@@ -6,7 +6,7 @@ CREATE TABLE classes (
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE,
   teacher_sign_in BOOLEAN NOT NULL DEFAULT FALSE,
   name VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
   duration_min SMALLINT NOT NULL,
   max_spots SMALLINT NOT NULL,
   spots_remaining SMALLINT,
