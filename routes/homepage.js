@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get("/calendar", (req, res) => {
     db.getAllLocations()
       .then(data => {
         const locations = { data: data }
