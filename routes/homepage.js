@@ -3,10 +3,12 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/calendar", (req, res) => {
+    console.log(req)
+    // const location_id = req.body.params.location_id
     db.getAllLocations()
       .then(data => {
         const locations = { data: data }
-        db.getClassesForLocation()
+        db.getClassesForLocation(location_id)
           .then(secondData => {
             console.log(secondData)
             const classes = { data: secondData };

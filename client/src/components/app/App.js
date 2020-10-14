@@ -15,7 +15,11 @@ function App() {
   //   backgroundImage =
   // }
   useEffect(() => {
-    axios.get(`http://localhost:5000/home/calendar`)
+    axios.get(`http://localhost:5000/home/calendar`, {
+      data: {
+        location_id: 1
+      }
+    })
     .then(res => {
       console.log(res.data);
     })

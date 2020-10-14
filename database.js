@@ -123,28 +123,6 @@ const addTopicsToUser = function (user_id, topic1, topic2, topic3) {
     })
 }
 
-const getClassesForLocation = function (locationid) {
-  return db.query(
-    `SELECT classes.*
-    FROM classes
-    JOIN locations ON locations.id = classes.location_id
-    WHERE locations.id = $1
-     `, [locationid])
-    .then(res => {
-      return res.rows;
-    });
-}
-
-const getAllLocations = function () {
-  return db.query(
-    `SELECT locations.*
-    FROM locations
-     `, [])
-    .then(res => {
-      return res.rows;
-    });
-}
-
 const getAllMyUploadedResources = function (userId) {
   return db.query(
     `SELECT resources.*
@@ -353,6 +331,29 @@ const getTopicsForResource = function(resourceId) {
 const insertUserTopics = function(userId, topicId) {
   return db.query(`INSERT INTO user_topics (user_id, topic_id) VALUES ($1, $2) RETURNING *`, [userId, topicId])
 }
+
+const getClassesForLocation = function (locationid) {
+  return db.query(
+    `SELECT classes.*
+    FROM classes
+    JOIN locations ON locations.id = classes.location_id
+    WHERE locations.id = $1
+     `, [locationid])
+    .then(res => {
+      return res.rows;
+    });
+}
+
+const getAllLocations = function () {
+  return db.query(
+    `SELECT locations.*
+    FROM locations
+     `, [])
+    .then(res => {
+      return res.rows;
+    });
+}
+
 
 exports.getResourcesBySearch = getResourcesBySearch;
 exports.addTopicsToUser = addTopicsToUser;
