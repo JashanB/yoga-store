@@ -12,9 +12,11 @@ const app        = express();
 const morgan     = require('morgan');
 const methodOverride = require('method-override');
 const database   = require("./database");
+const cors = require('cors')
+
 
 app.use(morgan('dev'));
-
+app.use(cors());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
