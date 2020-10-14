@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 function App() {
+  const [state, setState] = useState()
   const divStyle = {
     padding: '177.7778% 5px 5px 5px',
     background: 'rgba(0,0,0,0.03)',
@@ -12,6 +14,12 @@ function App() {
   // const backgroundStyle = {
   //   backgroundImage =
   // }
+  useEffect(() => {
+    axios.get(`http://localhost:5000/home/calendar`)
+    .then(res => {
+      console.log(res.data);
+    })
+  }, []);
   return (
     // <Router>
     // <div>

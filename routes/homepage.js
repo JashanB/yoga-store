@@ -10,6 +10,7 @@ module.exports = (db) => {
           .then(secondData => {
             console.log(secondData)
             const classes = { data: secondData };
+            console.log({ classes, locations })
             res.send({ classes, locations });
           })
           .catch(err => {
