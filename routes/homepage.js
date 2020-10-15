@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/calendar", (req, res) => {
+  router.get("/calendar/:location_id", (req, res) => {
     console.log(req)
-    // const location_id = req.body.params.location_id
+    console.log('params:', req.params)
+    const location_id = req.params.location_id
     db.getAllLocations()
       .then(data => {
         const locations = { data: data }
