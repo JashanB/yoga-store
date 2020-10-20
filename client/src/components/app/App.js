@@ -19,13 +19,21 @@ function App() {
   //   backgroundImage =
   // }
   useEffect(() => {
+    axios.get(`http://localhost:5000/home/calendar`)
+    .then(res => {
+      // console.log(res.data);
+      setLocations(state => ([...state, res.data.locations]));
+      console.log('locations', locations)
+    });
+  }, []);
+  useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar/${location}`)
     .then(res => {
-      console.log(res.data);
-      setClasses(state => ([...state, res.data.classes]))
-      console.log(classes)
-    })
-  }, []);
+      // console.log(res.data);
+      setClasses(state => ([...state, res.data.classes]));
+      console.log('classes', classes)
+    });
+  }, [location]);
   return (
     // <Router>
     // <div>
