@@ -5,20 +5,25 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 function App() {
-  const [state, setState] = useState()
+  const [locations, setLocations] = useState([]);
+  //set changing tab of location to change location state
+  const [location, setLocation] = useState(1);
+  const [classes, setClasses] = useState([]);
   const divStyle = {
     padding: '177.7778% 5px 5px 5px',
     background: 'rgba(0,0,0,0.03)',
     // border-radius: '8px'
-  }
-  const location_id = 1
+  };
+  const time_now = new Date();
   // const backgroundStyle = {
   //   backgroundImage =
   // }
   useEffect(() => {
-    axios.get(`http://localhost:5000/home/calendar/${location_id}`)
+    axios.get(`http://localhost:5000/home/calendar/${location}`)
     .then(res => {
       console.log(res.data);
+      setClasses(state => ([...state, res.data.classes]))
+      console.log(classes)
     })
   }, []);
   return (
