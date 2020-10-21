@@ -3,8 +3,16 @@
   height: 100vh;
 }
 
-.yoga-background-img {
-  height: 100%;
-  width: 100%;
+.locations-menu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
 }
 
+.locations-menu button {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}

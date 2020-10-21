@@ -19,24 +19,34 @@ function App() {
   // }
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar`)
-    .then(res => {
-      console.log(res.data.locations)
-      setLocations(state => ([...state, res.data.locations]));
-    });
+      .then(res => {
+        console.log(res.data.locations)
+        setLocations(state => (res.data.locations));
+      });
   }, []);
   useEffect(() => {
     const time_now = new Date();
     axios.get(`http://localhost:5000/home/calendar/${location}`)
-    .then(res => {
-      console.log('classes', res.data.classes);
-      setClasses(state => (res.data.classes));
-    });
+      .then(res => {
+        console.log('classes', res.data.classes);
+        setClasses(state => (res.data.classes));
+      });
   }, [location]);
-  setTimeout(function() {
-    // setLocation(state => (2));
-    console.log('state-locations', locations)
-    console.log('state-class', classes)
-  }, 5000)
+  // setTimeout(function () {
+  //   // setLocation(state => (2));
+  //   console.log('state-locations', locations)
+  //   console.log('state-class', classes)
+  // }, 5000);
+
+  const locationsMenu = locations.map(function (location, index) {
+    console.log('here', location)
+    return (
+      <button
+        key={index}>
+        {location.name}
+      </button>
+    )
+  })
   return (
     // <Router>
     // <div>
@@ -51,8 +61,11 @@ function App() {
     // {/* </Router> */}
     // </div>
     <div className="App">
+      <div className='locations-menu'>
+        {locationsMenu}
+      </div>
       <p>HI</p>
-    {/* <img className="logo-img" src="yogalogo.png"></img>
+      {/* <img className="logo-img" src="yogalogo.png"></img>
     <img className="main-header-img" src="yogaheader.png"></img>
     <img className="yoga-background-img"src="yoga.png"></img> */}
     </div>
