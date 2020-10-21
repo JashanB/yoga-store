@@ -14,6 +14,7 @@ module.exports = (db) => {
 
   router.get("/calendar/:location_id", (req, res) => {
     const location_id = req.params.location_id;
+    console.log(location_id)
     db.getClassesForLocation(location_id)
       .then(data => {
         res.send({ classes: data });

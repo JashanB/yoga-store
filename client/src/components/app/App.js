@@ -21,19 +21,20 @@ function App() {
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar`)
     .then(res => {
-      // console.log(res.data);
+      console.log(res.data.locations)
       setLocations(state => ([...state, res.data.locations]));
-      console.log('locations', locations)
     });
   }, []);
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar/${location}`)
     .then(res => {
-      // console.log(res.data);
-      setClasses(state => ([...state, res.data.classes]));
-      console.log('classes', classes)
+      console.log('classes', res.data.classes);
+      setClasses(state => (res.data.classes));
     });
   }, [location]);
+  setTimeout(function() {
+    setLocation(state => (2));
+  }, 5000)
   return (
     // <Router>
     // <div>
