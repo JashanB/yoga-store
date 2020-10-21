@@ -332,13 +332,13 @@ const insertUserTopics = function(userId, topicId) {
   return db.query(`INSERT INTO user_topics (user_id, topic_id) VALUES ($1, $2) RETURNING *`, [userId, topicId])
 }
 
-const getClassesForLocation = function (locationid) {
+const getClassesForLocation = function (locationid, time) {
   return db.query(
     `SELECT classes.*
     FROM classes
     JOIN locations ON locations.id = classes.location_id
-    WHERE locations.id = $1
-     `, [locationid])
+    WHERE locations.id = $1 AND classes.date >= $2
+     `, [locationid, time])
     .then(res => {
       return res.rows;
     });

@@ -14,7 +14,6 @@ function App() {
     background: 'rgba(0,0,0,0.03)',
     // border-radius: '8px'
   };
-  const time_now = new Date();
   // const backgroundStyle = {
   //   backgroundImage =
   // }
@@ -26,6 +25,7 @@ function App() {
     });
   }, []);
   useEffect(() => {
+    const time_now = new Date();
     axios.get(`http://localhost:5000/home/calendar/${location}`)
     .then(res => {
       console.log('classes', res.data.classes);
@@ -33,7 +33,9 @@ function App() {
     });
   }, [location]);
   setTimeout(function() {
-    setLocation(state => (2));
+    // setLocation(state => (2));
+    console.log('state-locations', locations)
+    console.log('state-class', classes)
   }, 5000)
   return (
     // <Router>
