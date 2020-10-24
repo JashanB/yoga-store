@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import Schedule from '../schedule';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
@@ -63,6 +64,9 @@ function App() {
     <div className="App">
       <div className='locations-menu'>
         {locationsMenu}
+      </div>
+      <div className="schedule">
+        <Schedule classes={classes}/>
       </div>
       <p>HI</p>
       {/* <img className="logo-img" src="yogalogo.png"></img>
