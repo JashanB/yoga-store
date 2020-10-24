@@ -4,8 +4,8 @@ import React from 'react';
 import axios from 'axios';
 
 export default function Schedule(props) {
-  const reserveClass = function () {
-    axios.post(`http://localhost:3001/`, {
+  const reserveClass = function (classId, userId) {
+    const insertClass = axios.post(`http://localhost:3001/`, {
       name: 'bob'
     })
   }
