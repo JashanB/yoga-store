@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar`)
       .then(res => {
-        console.log(res.data.locations)
+        // console.log(res.data.locations)
         setLocations(state => (res.data.locations));
       });
   }, []);
@@ -32,17 +32,12 @@ function App() {
         setClasses(state => (res.data.classes));
       });
   }, [location]);
-  // setTimeout(function () {
-  //   // setLocation(state => (2));
-  //   console.log('state-locations', locations)
-  //   console.log('state-class', classes)
-  // }, 5000);
+
   const handleLocationsClick = function(locationId) {
     setLocation(state => (locationId));
   }
 
   const locationsMenu = locations.map(function (location, index) {
-    console.log('here', location)
     return (
       <button
         key={index}
