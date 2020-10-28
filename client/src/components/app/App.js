@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Schedule from '../schedule';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Routes from '../../Routes';
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
     // {/* </Router> */}
     // </div>
     <div className="App">
+      <Routes />
       <div className='locations-menu'>
         {locationsMenu}
       </div>

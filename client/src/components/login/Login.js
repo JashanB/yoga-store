@@ -13,6 +13,7 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    axios.post(`http://localhost:5000/login`, {email: email, password: password});
   }
 
   return (
