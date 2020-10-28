@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar`)
       .then(res => {
-        // console.log(res.data.locations)
+        console.log(res.data.locations)
         setLocations(state => (res.data.locations));
       });
   }, []);
@@ -70,7 +70,6 @@ function App() {
       <div className="schedule">
         <Schedule classes={classes}/>
       </div>
-      <p>HI</p>
       {/* <img className="logo-img" src="yogalogo.png"></img>
     <img className="main-header-img" src="yogaheader.png"></img>
     <img className="yoga-background-img"src="yoga.png"></img> */}

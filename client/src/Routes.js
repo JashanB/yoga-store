@@ -6,12 +6,13 @@ import Login from './components/login/Login';
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path="/">
-        <App />
+      <Route exact path="/" render={() => <App />}>
+        {/* <App /> */}
       </Route>
-      <Route exact path="/login">
-        <Login />
+      <Route exact path="/login" render={() => <Login />}>
+        {/* <Login /> */}
       </Route>
     </Switch>
   );
 }
+
