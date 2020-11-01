@@ -4,29 +4,33 @@ const session = require('express-session');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const sess = req.session;
-    const email = req.body.email
-    const password = req.body.password
-    // const id = req.session.user_id;
-    //if email and password present, redirect to home, else redirect to login
+    let id = req.session.user_id;
     if (id) {
-      let userId = parseInt(req.session.user_id);
-      if (id === userId) {
-        db.getResourcesByTopicsForUser(id)
-          .then(data => {
-            const resource = { data: data, userId: userId };
-            res.render('index', { resource });
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      } else {
-        res.redirect("/")
-      }
+      res.redirect(`/${id}`);
     } else {
-      res.redirect("/")
+    res.render("login");
     }
   });
 
+  router.post("/", (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    if (email.length === 0) {
+      //later change to error on template ejs
+      res.status(404).send('Error: No email inputed.');
+    } else {
+      return db.getUserFromLogin(email, password)
+      .then( user => {
+        if (!user) {
+          //will add an error
+          res.redirect("/signup");
+        } else {
+          req.session.user_id = user.id;
+          res.redirect(`/${user.id}`);
+        }
+      })
+
+    }
+  })
   return router;
 };

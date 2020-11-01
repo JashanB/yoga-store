@@ -5,13 +5,14 @@ db.connect();
 
 
 //searching database for users
-const getUserWithEmail = function (email) {
+const getUserFromLogin = function (email, password) {
   return db.query(
-    `SELECT id, email
+    `SELECT id, email, first_name, last_name
   FROM users
-  WHERE email = $1`, [email])
+  WHERE email = $1 AND password = $2`, [email, password])
     .then(function (res) {
       if (res) {
+        console.log('-----', res)
         user = res.rows[0];
       } else {
         user = null;
@@ -363,7 +364,7 @@ exports.getResourcesByCreatedAt = getResourcesByCreatedAt;
 exports.addUser = addUser;
 exports.getAllTopics = getAllTopics;
 exports.getUserWithId = getUserWithId;
-exports.getUserWithEmail = getUserWithEmail;
+exports.getUserFromLogin = getUserFromLogin;
 exports.getClassesForLocation = getClassesForLocation;
 exports.getAllMyUploadedResources = getAllMyUploadedResources
 exports.getResourcesOrderByCountRating = getResourcesOrderByCountRating;

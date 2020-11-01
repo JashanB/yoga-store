@@ -13,7 +13,7 @@ const morgan     = require('morgan');
 const methodOverride = require('method-override');
 const database   = require("./database");
 const cors = require('cors')
-const session = require('express-session');
+// const session = require('express-session');
 
 
 
@@ -28,7 +28,12 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-app.use(session({secret: 'ssshhhhh'}));
+app.use(cookieSession({
+  name: 'session',
+  secret: 'yoga',
+  // Cookie Options
+  maxAge: 500 * 60 * 1000 // 5 minutes
+}));
 
 // app.use(cookieSession({
 //   name: 'session',
