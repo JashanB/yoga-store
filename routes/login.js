@@ -13,11 +13,12 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
+    console.log('//////', req.body)
     const email = req.body.email;
     const password = req.body.password;
-    if (email.length === 0) {
+    if (email.length === 0 || password.length === 0) {
       //later change to error on template ejs
-      res.status(404).send('Error: No email inputed.');
+      res.status(404).send('Error: User login error');
     } else {
       return db.getUserFromLogin(email, password)
       .then( user => {
