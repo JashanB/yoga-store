@@ -63,7 +63,6 @@ function App() {
     // {/* </Router> */}
     // </div>
     <div className="App">
-      <Routes />
       <div className='locations-menu'>
         {locationsMenu}
       </div>

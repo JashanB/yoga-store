@@ -34,14 +34,7 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 500 * 60 * 1000 // 5 minutes
 }));
-
-// app.use(cookieSession({
-//   name: 'session',
-//   secret: 'yoga',
-//   // Cookie Options
-//   maxAge: 500 * 60 * 1000 // 5 minutes
-// }));
-// app.use(methodOverride('_method'));
+app.use(methodOverride('_method'));
 
 // routes for testing
 const homepageRoutes = require("./routes/homepage");
