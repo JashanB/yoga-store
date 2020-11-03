@@ -6,7 +6,7 @@ import Login from './components/login/Login';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" component={App} exact />
+      <Route path="/home" component={App} />
       <Route path="/login" component={Login} />
     </Switch >
   );

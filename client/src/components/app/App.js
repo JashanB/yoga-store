@@ -11,14 +11,7 @@ function App() {
   //set changing tab of location to change location state
   const [location, setLocation] = useState(1);
   const [classes, setClasses] = useState([]);
-  const divStyle = {
-    padding: '177.7778% 5px 5px 5px',
-    background: 'rgba(0,0,0,0.03)',
-    // border-radius: '8px'
-  };
-  // const backgroundStyle = {
-  //   backgroundImage =
-  // }
+
   useEffect(() => {
     axios.get(`http://localhost:5000/home/calendar`)
       .then(res => {
