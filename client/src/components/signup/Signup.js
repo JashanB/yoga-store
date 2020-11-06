@@ -41,6 +41,30 @@ export default function Signup() {
             type="password"
           />
         </FormGroup>
+        <FormGroup controlId="firstName" bsSize="large">
+          <ControlLabel>First Name</ControlLabel>
+          <FormControl
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            type="firstName"
+          />
+        </FormGroup>
+        <FormGroup controlId="lastName" bsSize="large">
+          <ControlLabel>Last Name</ControlLabel>
+          <FormControl
+            value={lastname}
+            onChange={e => setLastName(e.target.value)}
+            type="lastName"
+          />
+        </FormGroup>
+        <FormGroup controlId="address" bsSize="large">
+          <ControlLabel>Address</ControlLabel>
+          <FormControl
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+            type="address"
+          />
+        </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
           Sign Up
         </Button>
