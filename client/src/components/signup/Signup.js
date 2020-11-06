@@ -1,24 +1,24 @@
-import './Login.css'
+import './Signup.css'
 import Class from '../class'
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // please enter login details
+  // please enter Signup details
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post(`http://localhost:5000/login`, {email: email, password: password});
+    axios.post(`http://localhost:5000/Signup`, {email: email, password: password});
   }
 
   return (
-    <div className="Login">
+    <div className="Signup">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
@@ -38,7 +38,7 @@ export default function Login() {
           />
         </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
-          Login
+          Sign Up
         </Button>
       </form>
     </div>
